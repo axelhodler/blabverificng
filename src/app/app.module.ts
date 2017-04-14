@@ -17,6 +17,7 @@ import {MaterialModule} from "@angular/material";
 import {Hashing} from "./boundaries/hashing";
 import {ListMembersComponent} from "./members/list/listmembers.component";
 import {MembersGateway} from "./boundaries/membersgateway";
+import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import {MembersGateway} from "./boundaries/membersgateway";
     FormsModule,
     HttpModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService),
-    AppRoutingModule
+    AppRoutingModule,
+    NoopAnimationsModule
   ],
   declarations: [AppComponent, SubmitReportComponent, VerifyReport, ListReportsComponent, ListMembersComponent],
   bootstrap: [AppComponent],
