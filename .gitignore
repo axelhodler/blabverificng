@@ -37,3 +37,6 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+node_modules/fsevents/lib/binding/Release/node-v51-darwin-x64/
+node_modules/node-sass/vendor/
