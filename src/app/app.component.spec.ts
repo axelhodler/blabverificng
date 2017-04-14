@@ -13,6 +13,7 @@ import {RouterTestingModule} from "@angular/router/testing";
 import {HttpModule} from "@angular/http";
 import {MaterialModule} from "@angular/material";
 import {ListMembersComponent} from "./members/list/listmembers.component";
+import 'hammerjs';
 
 describe('AppComponent', () => {
   let comp: AppComponent;

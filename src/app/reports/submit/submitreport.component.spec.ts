@@ -7,6 +7,7 @@ import {ReportsGateway} from "../../boundaries/reportsgateway";
 import {Router} from "@angular/router";
 import {MaterialModule} from "@angular/material";
 import {NoopAnimationsModule} from "@angular/platform-browser/animations";
+import 'hammerjs';
 
 describe('SubmitReportComponent', () => {
   let pageObject: SubmitReportPageObject;

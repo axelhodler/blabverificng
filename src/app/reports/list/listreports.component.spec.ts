@@ -5,6 +5,7 @@ import {ReportsGateway} from "../../boundaries/reportsgateway";
 import {MockReportsGateway} from "../../testdoubles/mockreportsgateway";
 import {MaterialModule} from "@angular/material";
 import {NoopAnimationsModule} from "@angular/platform-browser/animations";
+import 'hammerjs';
 
 describe('ListReportsComponent', () => {
   let comp: ListReportsComponent;

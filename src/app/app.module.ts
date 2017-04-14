@@ -18,6 +18,7 @@ import {Hashing} from "./boundaries/hashing";
 import {ListMembersComponent} from "./members/list/listmembers.component";
 import {MembersGateway} from "./boundaries/membersgateway";
 import {NoopAnimationsModule} from "@angular/platform-browser/animations";
+import 'hammerjs';
 
 @NgModule({
   imports: [
