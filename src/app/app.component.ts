@@ -1,10 +1,18 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {EthereumGateway} from './boundaries/ethereumgateway';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  moduleId: module.id,
+  selector: 'blab-verification',
+  templateUrl: 'app.component.html'
 })
 export class AppComponent {
-  title = 'app works!';
+  error: string;
+  constructor(private ethereumGateway: EthereumGateway) {
+    try {
+      ethereumGateway.connectToContract();
+    } catch (e) {
+      this.error = 'Could not connect to ethereum chain. Please Install MetaMask';
+    }
+  }
 }

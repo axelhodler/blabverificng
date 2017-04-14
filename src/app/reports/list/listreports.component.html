@@ -1,0 +1,11 @@
+<md-list id="reports-list">
+  <md-list-item *ngFor="let report of reports">
+    <h3 md-line> {{ report.content }} </h3>
+    <i md-line> {{ report.id }} </i>
+    <p md-line class="membername"> {{ report.submitter }} </p>
+    <p md-line> Verifiercount: {{ report.verifierCount }} </p>
+    <button md-mini-fab>
+      <md-icon>check</md-icon>
+    </button>
+  </md-list-item>
+</md-list>

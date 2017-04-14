@@ -1,0 +1,32 @@
+<p></p>
+
+<md-input-container class="full-width">
+  <input id="report-content"
+         mdInput
+         placeholder="Describe what you have achieved"
+         [(ngModel)]="report.content"
+         (ngModelChange)="updateReportHash()">
+</md-input-container>
+
+<md-input-container class="full-width">
+  <input id="report-compensation"
+         mdInput
+         type="number"
+         [(ngModel)]="report.compensation"
+         placeholder="What compensation do you expect. e.g. 200">
+</md-input-container>
+
+<p id="report-hashed"
+   style="float: left;"
+   [hidden]="!reportHash">
+  Your report has the unique hash of <i>{{reportHash}}</i> and will be stored as such
+</p>
+
+<button md-raised-button
+        class="pull-right"
+        color="primary"
+        id="submit-report"
+        [disabled]="!report.content"
+        (click)="submitReport()">
+  Submit Report
+</button>

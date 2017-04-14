@@ -6,6 +6,7 @@ import {FormsModule} from "@angular/forms";
 import {Config} from "./config";
 import {EthereumGateway} from "./boundaries/ethereumgateway";
 import {Contract} from "./boundaries/contract";
+import {By} from "@angular/platform-browser";
 import {ReportsGateway} from "./boundaries/reportsgateway";
 import {ListReportsComponent} from "./reports/list/listreports.component";
 import {AppRoutingModule} from "./app-routing.module";
@@ -14,7 +15,7 @@ import {HttpModule} from "@angular/http";
 import {MaterialModule} from "@angular/material";
 import {ListMembersComponent} from "./members/list/listmembers.component";
 
-describe('AppComponent', () => {
+describe('AppComponent', () =>{
   let comp: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
   let ethereumGatewaySpy: EthereumGateway;
@@ -25,7 +26,7 @@ describe('AppComponent', () => {
   };
 
   beforeEach(async(() => {
-    spyOn(ethereumGatewaySpy, 'connectToContract');
+    spyOn(ethereumGatewaySpy, 'connectToContract').and.throwError('');
     TestBed.configureTestingModule({
       imports: [FormsModule, HttpModule, AppRoutingModule, RouterTestingModule, MaterialModule],
       declarations: [AppComponent, SubmitReportComponent, VerifyReport, ListReportsComponent, ListMembersComponent],
@@ -40,8 +41,7 @@ describe('AppComponent', () => {
     fixture.detectChanges();
   });
 
-  it('makes ethereumGateway connect to the contract', () => {
-    expect(ethereumGatewaySpy.connectToContract).toHaveBeenCalled();
+  it('tells the user to install MetaMask on fail', () => {
+    expect(fixture.debugElement.query(By.css('#error')).nativeElement.textContent).toContain('Please Install MetaMask');
   });
-
 });
