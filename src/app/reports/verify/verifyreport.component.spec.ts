@@ -7,6 +7,7 @@ import {By} from "@angular/platform-browser";
 import {FormsModule} from "@angular/forms";
 import {VerifyReportComponentPageObject} from "./verifyreport.component.pageobject";
 import {MaterialModule} from "@angular/material";
+import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 
 describe('VerifyReport', () => {
   let comp: VerifyReport;
@@ -25,7 +26,7 @@ describe('VerifyReport', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule, MaterialModule],
+      imports: [FormsModule, MaterialModule, NoopAnimationsModule],
       declarations: [VerifyReport],
       providers: [{provide: Contract, useValue: contractMock}]
     })

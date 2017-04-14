@@ -4,6 +4,7 @@ import {ListReportsPageObject} from "./listreports.component.pageobject";
 import {ReportsGateway} from "../../boundaries/reportsgateway";
 import {MockReportsGateway} from "../../testdoubles/mockreportsgateway";
 import {MaterialModule} from "@angular/material";
+import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 
 describe('ListReportsComponent', () => {
   let comp: ListReportsComponent;
@@ -12,7 +13,7 @@ describe('ListReportsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [MaterialModule],
+      imports: [MaterialModule, NoopAnimationsModule],
       declarations: [ListReportsComponent],
       providers: [{provide: ReportsGateway, useClass: MockReportsGateway}]
     })

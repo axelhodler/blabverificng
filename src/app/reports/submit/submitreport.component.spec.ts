@@ -6,6 +6,7 @@ import {Contract} from "../../boundaries/contract";
 import {ReportsGateway} from "../../boundaries/reportsgateway";
 import {Router} from "@angular/router";
 import {MaterialModule} from "@angular/material";
+import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 
 describe('SubmitReportComponent', () => {
   let pageObject: SubmitReportPageObject;
@@ -26,7 +27,7 @@ describe('SubmitReportComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule, MaterialModule],
+      imports: [FormsModule, MaterialModule, NoopAnimationsModule],
       declarations: [SubmitReportComponent],
       providers: [{
         provide: Contract, useValue: contractSpy
