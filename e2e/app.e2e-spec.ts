@@ -1,14 +1,20 @@
-import { BlabverifyPage } from './app.po';
+import { browser, element, by } from 'protractor';
 
-describe('blabverify App', () => {
-  let page: BlabverifyPage;
+describe('Blabverific E2E Tests', () => {
+
+  let expectedMsg = 'blockLAB Verify';
 
   beforeEach(() => {
-    page = new BlabverifyPage();
+    browser.get('');
   });
 
-  it('should display message saying app works', () => {
-    page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+  it('displays: ' + expectedMsg + ' for the default route', () => {
+    expect(element(by.css('md-toolbar')).getText()).toEqual(expectedMsg);
   });
+
+  it('can enter the reports route via link', () => {
+    element(by.id('navbar-to-reports')).click();
+
+    expect(element(by.id('reports-list')).isPresent()).toBeTruthy();
+  })
 });
