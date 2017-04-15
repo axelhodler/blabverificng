@@ -5,7 +5,6 @@ import {SubmitReportComponent} from "./reports/submit/submitreport.component";
 import {VerifyReport} from "./reports/verify/verifyreport.component";
 import {EthereumGateway} from "./boundaries/ethereumgateway";
 import {AppComponent} from "./app.component";
-import {Config} from "./config";
 import {ReportsGateway} from "./boundaries/reportsgateway";
 import {ListReportsComponent} from "./reports/list/listreports.component";
 import {AppRoutingModule} from "./app-routing.module";
@@ -32,7 +31,7 @@ import 'hammerjs';
   ],
   declarations: [AppComponent, SubmitReportComponent, VerifyReport, ListReportsComponent, ListMembersComponent],
   bootstrap: [AppComponent],
-  providers: [EthereumGateway, Contract, Config, ReportsGateway, MembersGateway, Hashing]
+  providers: [EthereumGateway, Contract, ReportsGateway, MembersGateway, Hashing]
 })
 export class AppModule {
 }

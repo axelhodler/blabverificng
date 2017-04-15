@@ -3,7 +3,6 @@ import {async, ComponentFixture, TestBed} from "@angular/core/testing";
 import {AppComponent} from "./app.component";
 import {VerifyReport} from "./reports/verify/verifyreport.component";
 import {FormsModule} from "@angular/forms";
-import {Config} from "./config";
 import {EthereumGateway} from "./boundaries/ethereumgateway";
 import {Contract} from "./boundaries/contract";
 import {ReportsGateway} from "./boundaries/reportsgateway";
@@ -30,7 +29,7 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       imports: [FormsModule, HttpModule, AppRoutingModule, RouterTestingModule, MaterialModule],
       declarations: [AppComponent, SubmitReportComponent, VerifyReport, ListReportsComponent, ListMembersComponent],
-      providers: [Config, {provide: EthereumGateway, useValue: ethereumGatewaySpy}, Contract, ReportsGateway]
+      providers: [{provide: EthereumGateway, useValue: ethereumGatewaySpy}, Contract, ReportsGateway]
     })
       .compileComponents();
   }));

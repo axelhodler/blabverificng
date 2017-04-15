@@ -5,7 +5,7 @@ CONFIG_CONTENTS=`./scripts/prepare_contract.sh`
 CONFIG_CONTENTS_ARRAY=($CONFIG_CONTENTS)
 cd ..
 
-CONFIG_FILE=src/app/config.ts
+CONFIG_FILE=src/environments/environment.ts
 
 ADDRESS=${CONFIG_CONTENTS_ARRAY[0]}
 sed -i '' 's#_CONTRACT_ADDRESS_#'$ADDRESS'#g' $CONFIG_FILE
