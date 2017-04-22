@@ -6,6 +6,7 @@
     "ng": "ng",
     "start": "./scripts/run.sh",
     "build": "ng build --environment=prod",
+    "release": "./scripts/release.sh",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "./scripts/run.sh e2e",
