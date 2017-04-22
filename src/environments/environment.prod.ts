@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  CONTRACT_ADDRESS: '0x7C4F731A6fFBdb694585FebA7821Bb8f0966ca32',
+  CONTRACT_ABI: '[{"constant":true,"inputs":[{"name":"reportId","type":"string"}],"name":"verifiersFor","outputs":[{"name":"addresses","type":"address[]"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"membership","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"reportId","type":"string"}],"name":"verify","outputs":[],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"reportId","type":"string"},{"name":"compensation","type":"uint256"}],"name":"submit","outputs":[],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"reportId","type":"string"}],"name":"submitterFor","outputs":[{"name":"submitter","type":"address"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"reportId","type":"string"}],"name":"isValid","outputs":[{"name":"isValid","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"token","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"},{"inputs":[{"name":"membershipManager","type":"address"}],"payable":false,"type":"constructor"}]'
 };
