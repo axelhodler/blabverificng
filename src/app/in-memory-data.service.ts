@@ -2,28 +2,22 @@ import {InMemoryDbService} from "angular-in-memory-web-api";
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     let reports = [{
-      id: 'hashedreport',
-      content: 'report contents',
-      submitter: 'Sally the Submitter',
-      verifierCount: 3
+      id: '0x60419d353117a1ad25e163afc5ea37fcea09705cb0fa1725547cfc7e808e86db',
+      content: 'jochen2016',
+      submitter: 'Jochen Kaßberger',
+      verifierCount: 1
     }, {
-      id: 'reporthash',
-      content: 'report content',
-      submitter: 'Sven the Submitter',
-      verifierCount: 2
+      id: '0x1298c7d4cfc354fbfdf3de55218340cccddefdb5c6c6adf7a10439836ac73c0e',
+      content: 'axel2016',
+      submitter: 'Axel Hodler',
+      verifierCount: 1
     }];
     let members = [{
-      id: '0x38588822bea476d5e1d56cfc9ce9781fe5262196',
-      name: 'Alice'
+      id: '0x1fe455ff68b5ce672f33ea1a12ab51ff3edc3362',
+      name: 'Axel Hodler'
     }, {
-      id: '0xdf700fd0413ca5772cbf5a588d3080469f2edda2',
-      name: 'Bob'
-    }, {
-      id: '0x354990de9386772900c6b257ec0b8dcc5af8bfba',
-      name: 'Carol'
-    }, {
-      id: '0xa091b68b607622a281d7d0864217ea348957b574',
-      name: 'Dave'
+      id: '0xf2f2581684fd5b7a0e84b3cdfa4a842a0fcce746',
+      name: 'Jochen Kaßberger'
     }];
     return {members, reports};
   }
