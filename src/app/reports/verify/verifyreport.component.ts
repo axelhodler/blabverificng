@@ -1,5 +1,6 @@
 import {Component, Input} from "@angular/core";
 import {Contract} from "../../boundaries/contract";
+import {ActivatedRoute, Params} from "@angular/router";
 
 @Component({
   moduleId: module.id,
@@ -13,7 +14,14 @@ export class VerifyReport {
   isReportValidText: string;
   reportVerifiers: Array<string>;
 
-  constructor(private contract: Contract) {
+  constructor(private route: ActivatedRoute, private contract: Contract) {
+  }
+
+  ngOnInit() {
+    if (Object.keys(this.route.snapshot.params).length > 0) {
+      this.reportId = this.route.snapshot.params['reportid'];
+      this.isReportValid();
+    }
   }
 
   verifyReport() {

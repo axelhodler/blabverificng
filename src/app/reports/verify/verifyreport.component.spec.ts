@@ -9,19 +9,27 @@ import {VerifyReportComponentPageObject} from "./verifyreport.component.pageobje
 import {MaterialModule} from "@angular/material";
 import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 import 'hammerjs';
+import {ActivatedRoute} from "@angular/router";
+
+let comp: VerifyReport;
+let pageObject: VerifyReportComponentPageObject;
+let fixture: ComponentFixture<VerifyReport>;
+let contractMock = {
+  verifyReport() {
+  },
+  isReportValid() {
+    return Promise.resolve();
+  },
+  fetchVerifiers() {
+    return Promise.resolve();
+  }
+};
 
 describe('VerifyReport', () => {
-  let comp: VerifyReport;
-  let pageObject: VerifyReportComponentPageObject;
-  let fixture: ComponentFixture<VerifyReport>;
-  let contractMock = {
-    verifyReport() {
-    },
-    isReportValid() {
-      return Promise.resolve();
-    },
-    fetchVerifiers() {
-      return Promise.resolve();
+
+  let activatedRouteStub = {
+    snapshot: {
+      params: {}
     }
   };
 
@@ -29,7 +37,7 @@ describe('VerifyReport', () => {
     TestBed.configureTestingModule({
       imports: [FormsModule, MaterialModule, NoopAnimationsModule],
       declarations: [VerifyReport],
-      providers: [{provide: Contract, useValue: contractMock}]
+      providers: [{provide: Contract, useValue: contractMock}, {provide: ActivatedRoute, useValue: activatedRouteStub}]
     })
       .compileComponents();
   }));
@@ -44,7 +52,8 @@ describe('VerifyReport', () => {
   });
 
   it('verifies a report on clicking the verify report button', () => {
-    pageObject.enterReportId('reportId', () => {});
+    pageObject.enterReportId('reportId', () => {
+    });
 
     fixture.debugElement.query(By.css('#verify-report')).nativeElement.click();
 
@@ -54,7 +63,8 @@ describe('VerifyReport', () => {
   it('can find reports by id', () => {
     spyOn(contractMock, 'isReportValid').and.returnValue(Promise.resolve());
 
-    pageObject.enterReportId('reportId', () => {});
+    pageObject.enterReportId('reportId', () => {
+    });
 
     expect(contractMock.isReportValid).toHaveBeenCalledWith('reportId');
   });
@@ -96,5 +106,44 @@ describe('VerifyReport', () => {
 
     expect(pageObject.reportsVerifierTextContent()).toContain('firstAddress');
     expect(pageObject.reportsVerifierTextContent()).toContain('secondAddress');
+  }));
+});
+
+describe('VerifyReport - entered with reportid already provided', () => {
+  let activeRouteStub = {
+    snapshot: {
+      params: {
+        reportid: 'someReportId'
+      }
+    }
+  };
+
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      imports: [FormsModule, MaterialModule, NoopAnimationsModule],
+      declarations: [VerifyReport],
+      providers: [{provide: Contract, useValue: contractMock}, {provide: ActivatedRoute, useValue: activeRouteStub}]
+    })
+      .compileComponents();
+  }));
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(VerifyReport);
+    pageObject = new VerifyReportComponentPageObject(fixture);
+    comp = fixture.componentInstance;
+    contractMock = TestBed.get(Contract);
+  });
+
+  it('fetches report if provided via route params', fakeAsync(() => {
+    spyOn(contractMock, 'verifyReport').and.returnValue(Promise.resolve());
+    spyOn(contractMock, 'fetchVerifiers').and.returnValue(Promise.resolve());
+    spyOn(contractMock, 'isReportValid').and.returnValue(Promise.resolve());
+
+    fixture.detectChanges();
+    tick();
+
+    expect(pageObject.reportIdValue()).toBe('someReportId');
+    expect(contractMock.fetchVerifiers).toHaveBeenCalledWith('someReportId');
+    expect(contractMock.isReportValid).toHaveBeenCalledWith('someReportId');
   }));
 });

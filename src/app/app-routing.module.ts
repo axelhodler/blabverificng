@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: 'reports', component: ListReportsComponent},
   { path: 'reports/new', component: SubmitReportComponent},
   { path: 'reports/verify', component: VerifyReport},
+  { path: 'reports/verify/:reportid', component: VerifyReport},
   { path: 'members', component: ListMembersComponent}
 ];
 
