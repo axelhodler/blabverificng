@@ -1,5 +1,5 @@
 <md-nav-list id="reports-list">
-  <a md-list-item href="/reports/verify/{{report.id}}" *ngFor="let report of reports">
+  <a md-list-item routerLink="/reports/verify/{{report.id}}" *ngFor="let report of reports">
     <h3 md-line> {{ report.content }} </h3>
     <i md-line> {{ report.id }} </i>
     <p md-line class="membername"> {{ report.submitter }} </p>
