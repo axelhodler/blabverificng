@@ -8,6 +8,10 @@ Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app 
 
 Run `npm run build` to build the project ready for production. The build artifacts will be stored in the `dist/` directory.
 
+## Release
+
+Run `npm run release`
+
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
