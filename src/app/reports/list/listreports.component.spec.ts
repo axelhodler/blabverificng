@@ -1,11 +1,12 @@
 import {ListReportsComponent} from "./listreports.component";
-import {ComponentFixture, async, TestBed, fakeAsync} from "@angular/core/testing";
+import {async, ComponentFixture, fakeAsync, TestBed} from "@angular/core/testing";
 import {ListReportsPageObject} from "./listreports.component.pageobject";
 import {ReportsGateway} from "../../boundaries/reportsgateway";
 import {MockReportsGateway} from "../../testdoubles/mockreportsgateway";
 import {MaterialModule} from "@angular/material";
 import {NoopAnimationsModule} from "@angular/platform-browser/animations";
-import 'hammerjs';
+import "hammerjs";
+import {RouterTestingModule} from "@angular/router/testing";
 
 describe('ListReportsComponent', () => {
   let comp: ListReportsComponent;
@@ -14,7 +15,7 @@ describe('ListReportsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [MaterialModule, NoopAnimationsModule],
+      imports: [MaterialModule, NoopAnimationsModule, RouterTestingModule],
       declarations: [ListReportsComponent],
       providers: [{provide: ReportsGateway, useClass: MockReportsGateway}]
     })
@@ -33,10 +34,10 @@ describe('ListReportsComponent', () => {
   });
 
   it('displays the reporters name', () => {
-    let report = 'hashedreport report contents Sally the Submitter';
-    let reportsList = pageObject.reportsList();
+    const report = 'hashedreport report contents Sally the Submitter';
+    const reportsList = pageObject.reportsList();
 
-    let rows = reportsList.firstElementChild.getElementsByClassName('membername');
+    const rows = reportsList.firstElementChild.getElementsByClassName('membername');
 
     expect(rows[0].textContent).toContain('Sally the Submitter');
   });
