@@ -6,5 +6,7 @@
 export const environment = {
   production: false,
   CONTRACT_ADDRESS: '_CONTRACT_ADDRESS_',
-  CONTRACT_ABI: '_CONTRACT_ABI_'
+  CONTRACT_ABI: '_CONTRACT_ABI_',
+  TOKEN_ADDRESS: '_TOKEN_ADDRESS_',
+  TOKEN_ABI: '_TOKEN_ABI_'
 };
