@@ -19,7 +19,7 @@ export class InMemoryDataService implements InMemoryDbService {
       id: '0xf2f2581684fd5b7a0e84b3cdfa4a842a0fcce746',
       name: 'Jochen Kaßberger'
     }, {
-      id: '0x21eA3453B22Ea6d6ee6e3dA9D00110e6265280E3',
+      id: '0x21ea3453b22ea6d6ee6e3da9d00110e6265280e3',
       name: 'Jan-Paul Buchwald'
     }];
     return {members, reports};
