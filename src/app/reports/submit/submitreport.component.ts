@@ -1,6 +1,6 @@
 import {Component, Input} from "@angular/core";
 import {Hashing} from "../../boundaries/hashing";
-import {Contract} from "../../boundaries/contract";
+import {VerificationContract} from "../../boundaries/verification_contract";
 import {ReportsGateway} from "../../boundaries/reportsgateway";
 import {Router} from "@angular/router";
 import {Report} from "../report";
@@ -18,7 +18,7 @@ export class SubmitReportComponent {
 
   hashing: Hashing;
 
-  constructor(private router: Router, private contract: Contract, private reportsGateway: ReportsGateway) {
+  constructor(private router: Router, private contract: VerificationContract, private reportsGateway: ReportsGateway) {
     this.hashing = new Hashing();
     this.report = new Report();
   }

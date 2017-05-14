@@ -2,7 +2,7 @@ import {
   async, TestBed, ComponentFixture, fakeAsync, tick
 } from '@angular/core/testing';
 import {VerifyReport} from "./verifyreport.component";
-import {Contract} from "../../boundaries/contract";
+import {VerificationContract} from "../../boundaries/verification_contract";
 import {By} from "@angular/platform-browser";
 import {FormsModule} from "@angular/forms";
 import {VerifyReportComponentPageObject} from "./verifyreport.component.pageobject";
@@ -37,7 +37,7 @@ describe('VerifyReport', () => {
     TestBed.configureTestingModule({
       imports: [FormsModule, MaterialModule, NoopAnimationsModule],
       declarations: [VerifyReport],
-      providers: [{provide: Contract, useValue: contractMock}, {provide: ActivatedRoute, useValue: activatedRouteStub}]
+      providers: [{provide: VerificationContract, useValue: contractMock}, {provide: ActivatedRoute, useValue: activatedRouteStub}]
     })
       .compileComponents();
   }));
@@ -46,7 +46,7 @@ describe('VerifyReport', () => {
     fixture = TestBed.createComponent(VerifyReport);
     pageObject = new VerifyReportComponentPageObject(fixture);
     comp = fixture.componentInstance;
-    contractMock = TestBed.get(Contract);
+    contractMock = TestBed.get(VerificationContract);
     spyOn(contractMock, 'verifyReport').and.returnValue(Promise.resolve());
     fixture.detectChanges();
   });
@@ -122,7 +122,7 @@ describe('VerifyReport - entered with reportid already provided', () => {
     TestBed.configureTestingModule({
       imports: [FormsModule, MaterialModule, NoopAnimationsModule],
       declarations: [VerifyReport],
-      providers: [{provide: Contract, useValue: contractMock}, {provide: ActivatedRoute, useValue: activeRouteStub}]
+      providers: [{provide: VerificationContract, useValue: contractMock}, {provide: ActivatedRoute, useValue: activeRouteStub}]
     })
       .compileComponents();
   }));
@@ -131,7 +131,7 @@ describe('VerifyReport - entered with reportid already provided', () => {
     fixture = TestBed.createComponent(VerifyReport);
     pageObject = new VerifyReportComponentPageObject(fixture);
     comp = fixture.componentInstance;
-    contractMock = TestBed.get(Contract);
+    contractMock = TestBed.get(VerificationContract);
   });
 
   it('fetches report if provided via route params', fakeAsync(() => {

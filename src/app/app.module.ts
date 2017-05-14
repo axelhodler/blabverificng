@@ -11,7 +11,7 @@ import {AppRoutingModule} from "./app-routing.module";
 import {HttpModule} from "@angular/http";
 import {InMemoryWebApiModule} from "angular-in-memory-web-api";
 import {InMemoryDataService} from "./in-memory-data.service";
-import {Contract} from "./boundaries/contract";
+import {VerificationContract} from "./boundaries/verification_contract";
 import {MaterialModule} from "@angular/material";
 import {Hashing} from "./boundaries/hashing";
 import {ListMembersComponent} from "./members/list/listmembers.component";
@@ -31,7 +31,7 @@ import 'hammerjs';
   ],
   declarations: [AppComponent, SubmitReportComponent, VerifyReport, ListReportsComponent, ListMembersComponent],
   bootstrap: [AppComponent],
-  providers: [EthereumGateway, Contract, ReportsGateway, MembersGateway, Hashing]
+  providers: [EthereumGateway, VerificationContract, ReportsGateway, MembersGateway, Hashing]
 })
 export class AppModule {
 }

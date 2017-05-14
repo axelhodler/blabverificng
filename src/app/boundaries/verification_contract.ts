@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {EthereumGateway} from "./ethereumgateway";
 
 @Injectable()
-export class Contract {
+export class VerificationContract {
   constructor(private ethereumGateway: EthereumGateway) {
   }
 
@@ -16,21 +16,21 @@ export class Contract {
 
   isReportValid(hash: string) {
     return new Promise((resolve) => {
-      this.ethereumGateway.contract.isValid
+      this.ethereumGateway.verificationContract.isValid
         .call(hash, (err: any, data: number) => resolve(data));
     })
   }
 
   fetchVerifiers(hash: string) {
     return new Promise((resolve) => {
-      this.ethereumGateway.contract.verifiersFor
+      this.ethereumGateway.verificationContract.verifiersFor
         .call(hash, (err: any, data: Array<string>) => resolve(data));
     })
   }
 
   private submit(hash: string, compensation: number) {
     return new Promise((resolve) => {
-      this.ethereumGateway.contract.submit(hash, compensation, {
+      this.ethereumGateway.verificationContract.submit(hash, compensation, {
         from: this.ethereumGateway.currentUserAddress()
       }, () => resolve())
     })
@@ -38,7 +38,7 @@ export class Contract {
 
   private verify(hash: string) {
     return new Promise((resolve) => {
-      this.ethereumGateway.contract.verify(hash, {
+      this.ethereumGateway.verificationContract.verify(hash, {
         from: this.ethereumGateway.currentUserAddress()
       }, () => resolve())
     })

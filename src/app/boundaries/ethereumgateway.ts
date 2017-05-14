@@ -4,10 +4,10 @@ declare var web3: any;
 
 @Injectable()
 export class EthereumGateway {
-  contract: any;
+  verificationContract: any;
 
   connectToContract() {
-    this.contract = web3.eth.contract(JSON.parse(environment.CONTRACT_ABI)).at(environment.CONTRACT_ADDRESS);
+    this.verificationContract = web3.eth.verificationContract(JSON.parse(environment.CONTRACT_ABI)).at(environment.CONTRACT_ADDRESS);
   }
 
   currentUserAddress() {

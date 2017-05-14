@@ -1,5 +1,5 @@
 import {Component, Input} from "@angular/core";
-import {Contract} from "../../boundaries/contract";
+import {VerificationContract} from "../../boundaries/verification_contract";
 import {ActivatedRoute, Params} from "@angular/router";
 
 @Component({
@@ -14,7 +14,7 @@ export class VerifyReport {
   isReportValidText: string;
   reportVerifiers: Array<string>;
 
-  constructor(private route: ActivatedRoute, private contract: Contract) {
+  constructor(private route: ActivatedRoute, private contract: VerificationContract) {
   }
 
   ngOnInit() {

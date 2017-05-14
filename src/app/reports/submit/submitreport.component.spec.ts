@@ -2,7 +2,7 @@ import {SubmitReportComponent} from "./submitreport.component";
 import {async, ComponentFixture, TestBed, fakeAsync, tick} from "@angular/core/testing";
 import {FormsModule} from "@angular/forms";
 import {SubmitReportPageObject} from "./submitreport.component.pageobject";
-import {Contract} from "../../boundaries/contract";
+import {VerificationContract} from "../../boundaries/verification_contract";
 import {ReportsGateway} from "../../boundaries/reportsgateway";
 import {Router} from "@angular/router";
 import {MaterialModule} from "@angular/material";
@@ -31,7 +31,7 @@ describe('SubmitReportComponent', () => {
       imports: [FormsModule, MaterialModule, NoopAnimationsModule],
       declarations: [SubmitReportComponent],
       providers: [{
-        provide: Contract, useValue: contractSpy
+        provide: VerificationContract, useValue: contractSpy
       }, {
         provide: ReportsGateway, useValue: reportsGatewaySpy
       }, {
@@ -45,7 +45,7 @@ describe('SubmitReportComponent', () => {
     fixture = TestBed.createComponent(SubmitReportComponent);
     pageObject = new SubmitReportPageObject(fixture);
     comp = fixture.componentInstance;
-    contractSpy = TestBed.get(Contract);
+    contractSpy = TestBed.get(VerificationContract);
     reportsGatewaySpy = TestBed.get(ReportsGateway);
     routerSpy = TestBed.get(Router);
     spyOn(contractSpy, 'submitReport').and.returnValue(Promise.resolve());
